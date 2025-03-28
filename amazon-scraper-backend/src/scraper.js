@@ -59,3 +59,19 @@ export const scrapeAmazon = async (keyword) => {
     throw new Error("Failed to scrape Amazon");
   }
 };
+
+export const handleScrapeRequest = async (req, res) => {
+  try {
+    const { keyword } = req.query;
+
+    if (!keyword) {
+      res.status(400).json({ error: "Keyword is required" });
+      return;
+    }
+
+    const products = await scrapeAmazon(keyword);
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

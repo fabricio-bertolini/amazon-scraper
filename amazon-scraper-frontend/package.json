@@ -10,5 +10,7 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "type": "module"
+  "type": "module",
+  "peerDependencies": {
+  }
 }

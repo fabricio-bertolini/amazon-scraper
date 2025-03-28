@@ -23,9 +23,10 @@ document.getElementById("scrape-btn").addEventListener("click", async () => {
         (product) => `
         <div class="product">
           <h3>${product.title}</h3>
-          <p>Rating: ${product.rating}</p>
-          <p>Reviews: ${product.reviews}</p>
           <img src="${product.image}" alt="${product.title}" />
+          <p>Rating: ${product.rating}</p>
+          <p>Reviews: ${product.formattedReviews}</p>
+          <p>Price: ${product.formattedPrice}</p>
         </div>
       `
       )
