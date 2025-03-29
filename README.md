@@ -16,7 +16,7 @@ Clone the repository to your local machine and navigate to the project directory
 
 ```bash
 git clone <repository-url>
-cd AmazonApp
+cd amazon-scraper
 ```
 
 ### Install Dependencies
@@ -57,6 +57,7 @@ Navigate to the frontend directory and start the development server using npm:
 
 ```bash
 cd ../amazon-scraper-frontend
+npm run build
 npm run dev
 ```
 
