@@ -14,7 +14,7 @@ export const scrapeAmazon = async (keyword) => {
         "User-Agent": userAgent.toString(),
         Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
         Host: "www.amazon.com",
-        "Accept-Encoding": "gzip, deflate, br,zstd",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
         "Accept-Language": "en-US,en;q=0.9",
         "Cache-Control": "no-cache",
         TE: "Trailers",
@@ -36,7 +36,7 @@ export const scrapeAmazon = async (keyword) => {
         if (priceWhole === "N/A") {
           return; // Skip if priceWhole is empty
         }
-        const title = item.querySelector("h2.a-size-medium.a-spacing-none.a-color-base.a-text-normal span")?.textContent.trim() || "N/A";
+        const title = item.querySelector("div.a-section h2.a-size-base-plus")?.textContent.trim() || item.querySelector("div.a-section h2")?.textContent.trim();
         const rating = item.querySelector(".a-icon-alt")?.textContent.trim() || "N/A";
         const reviews = item.querySelector(".a-size-small .a-link-normal")?.textContent.trim() || "N/A";
         const image = item.querySelector(".s-image")?.src || "N/A";

@@ -7,9 +7,7 @@
     "@types/bun": "latest"
   },
   "peerDependencies": {
-    "@types/express": "^4.17.21",
-    "@types/jsdom": "^22.0.0",
-    "@types/user-agents": "^1.1.491"
+    "typescript": "^5"
   },
   "dependencies": {
     "axios": "^1.8.4",

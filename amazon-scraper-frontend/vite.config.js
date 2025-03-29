@@ -1,13 +1,14 @@
 import { defineConfig } from "vite";
 
+// Export Vite configuration
 export default defineConfig({
-  root: "./src", // Ensure the root directory is correct
+  root: "./src", // Set the root directory for the project to the "src" folder
   build: {
-    outDir: "dist", // Output directory for the build
+    outDir: "dist", // Specify the output directory for the build files
     rollupOptions: {
       input: {
-        main: "src/index.html", // Main homepage
-        scrape: "src/scrape.html", // Scrape page
+        main: "src/index.html", // Entry point for the homepage
+        scrape: "src/scrape.html", // Entry point for the scrape page
       },
     },
   },
