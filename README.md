@@ -7,7 +7,8 @@ The project consists of a frontend built with Vite and a backend built with Expr
 
 Before setting up the project, ensure you have the following installed:
 
-- [Bun](https://bun.sh) (optional, for backend dependency management) - A fast JavaScript runtime.
+- [Bun](https://bun.sh) - A fast JavaScript runtime (optional, for backend dependency management)
+- [Tor Service](https://www.torproject.org) - Tor proxy used in the projec (built-in proxy option, you can use your own proxy solution if you prefer)
 
 ## Setup Instructions
 
@@ -58,13 +59,13 @@ const proxies = [
 ];
 ```
 
-You can use free or paid proxy services. Ensure the proxies are reliable and support HTTPS.
+You can use free or paid proxy services. Ensure the proxies are reliable and support HTTPS. Or you can follow the next step for a TOR setup tutorial.
 
 ### Using TOR as a Proxy
 
 To use TOR as a rotating proxy:
 
-1. Install TOR from [TOR's official website](https://www.torproject.org/).
+1. Install TOR from [TOR's official website](https://www.torproject.org/) as a service (Video explaining how to install TOR as a service in windows: https://www.youtube.com/watch?v=wF0eUhq6a3A) .
 2. Start the TOR service:
    ```bash
    tor
