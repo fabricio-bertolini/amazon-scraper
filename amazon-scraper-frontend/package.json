@@ -2,7 +2,8 @@
   "name": "amazon-scraper-frontend",
   "version": "0.0.0",
   "devDependencies": {
-    "vite": "^6.2.0"
+    "vite": "^6.2.0",
+    "@vitejs/plugin-react": "^4.0.0"
   },
   "private": true,
   "scripts": {
@@ -10,7 +11,5 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "type": "module",
-  "peerDependencies": {
-  }
+  "type": "module"
 }

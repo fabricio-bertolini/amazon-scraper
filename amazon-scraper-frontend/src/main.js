@@ -1,55 +1,47 @@
 // Add event listener to the scrape button
 document.getElementById("scrape-btn").addEventListener("click", async () => {
-  // Get the keyword input value from the input field
-  const keyword = document.getElementById("keyword").value;
-
-  // Get the results container where scraped data will be displayed
-  const resultsDiv = document.getElementById("results");
-
-  // Validate if the keyword is provided
+  const keyword = document.getElementById("keyword").value.trim(); // Get the keyword from the input field
   if (!keyword) {
-    resultsDiv.innerHTML = "<p>Please enter a keyword.</p>"; // Show error message if input is empty
+    alert("Please enter a keyword."); // Alert if the input is empty
     return;
   }
 
-  // Show loading message while fetching data from the backend
-  resultsDiv.innerHTML = "<p>Loading...</p>";
+  const resultsContainer = document.getElementById("results"); // Get the results container
+  resultsContainer.innerHTML = '<div class="spinner"></div>'; // Show a loading spinner
 
   try {
-    // Fetch data from the backend API using the provided keyword
+    // Make a GET request to the backend API
     const response = await fetch(`http://localhost:3000/api/scrape?keyword=${encodeURIComponent(keyword)}`);
-    
-    // Check if the response is not successful
     if (!response.ok) {
-      throw new Error(`API error: ${response.status} ${response.statusText}`);
+      const errorText = await response.text();
+      console.error("API Error:", errorText); // Log the error
+      throw new Error("Failed to fetch product data. Please try again later."); // Consistent error message
     }
 
-    // Parse the JSON response from the API
-    const data = await response.json();
-
-    // Handle errors returned by the API
-    if (data.error) {
-      resultsDiv.innerHTML = `<p>Error: ${data.error}</p>`; // Display error message
+    const products = await response.json(); // Parse the JSON response
+    if (products.length === 0) {
+      resultsContainer.innerHTML = "<p>No products found for the given keyword.</p>"; // Show a message if no products are found
       return;
     }
 
-    // Render the product data dynamically in the results container
-    resultsDiv.innerHTML = data
+    // Render the products in the results container
+    resultsContainer.innerHTML = products
       .map(
         (product) => `
         <div class="product">
-          <h3>${product.title}</h3>
           <img src="${product.image}" alt="${product.title}" />
-          <p>Rating: ${product.rating}</p>
-          <p>Reviews: ${product.formattedReviews}</p>
-          <p>Price: ${product.formattedPrice}</p>
+          <div class="product-details">
+            <h3>${product.title}</h3>
+            <p><strong>Rating:</strong> ${product.rating}</p>
+            <p><strong>Reviews:</strong> ${product.formattedReviews}</p>
+            <p><strong>Price:</strong> ${product.formattedPrice}</p>
+          </div>
         </div>
       `
       )
-      .join(""); // Join all product HTML strings into one
+      .join("");
   } catch (error) {
-    // Log any errors to the console and display an error message
-    console.error("Frontend error:", error.message);
-    resultsDiv.innerHTML = `<p>Failed to fetch data: ${error.message}</p>`;
+    console.error("Error occurred:", error.message); // Log the error
+    resultsContainer.innerHTML = `<p style="color: red;">Error: ${error.message || "An unexpected error occurred."}</p>`; // Fallback error message
   }
 });

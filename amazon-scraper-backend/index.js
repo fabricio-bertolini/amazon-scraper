@@ -30,3 +30,9 @@ app.get("/api/scrape", handleScrapeRequest); // Delegate to the scraper handler
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`); // Log the server URL
 });
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error("Unhandled Error:", err.stack || err.message || "Unknown error"); // Log the error
+  res.status(500).json({ error: err.message || "Internal Server Error" }); // Fallback error message
+});
