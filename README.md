@@ -1,6 +1,7 @@
 # Amazon Scraper Application
 
-This project is a full-stack application for scraping product details from Amazon. It consists of a frontend built with Vite and a backend built with Express.js. The application allows users to search for products on Amazon and view their details, including title, price, rating, and reviews.
+This project is a full-stack application for scraping product details from Amazon. It was made within a week as part of a coding challenge. 
+The project consists of a frontend built with Vite and a backend built with Express.js. The application allows users to search for products on Amazon and view their details, including title, price, rating, and reviews.
 
 ## Prerequisites
 
