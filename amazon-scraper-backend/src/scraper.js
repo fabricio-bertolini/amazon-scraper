@@ -11,7 +11,7 @@ const cookie = ''; // Replace with your Amazon cookie if needed
 // TOR configuration constants
 const TOR_CONTROL_HOST = "127.0.0.1"; // TOR control host (default localhost)
 const TOR_CONTROL_PORT = 9051; // TOR control port (default 9051)
-const TOR_CONTROL_PASSWORD = ""; // Set this in your TOR configuration
+const TOR_CONTROL_PASSWORD = "16:8886AC82A911E91D602E34151B74D5D14A0E330E1FD0D2F5D81E85FEBC"; // Set this in your TOR configuration
 
 // Utility function to introduce a random delay between min and max milliseconds
 const delay = (min, max) => new Promise((resolve) => {
